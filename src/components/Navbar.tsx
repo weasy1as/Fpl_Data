@@ -5,7 +5,7 @@ import { IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="p-6 flex justify-between items-center mb-5 bg-gradient-to-r from-[#00ff87] to-[#02efff]">
+    <nav className="p-6 flex justify-between items-center  bg-gradient-to-r from-[#00ff87] to-[#02efff]">
       <SiPremierleague />
       <div>
         <div className="sm:hidden">

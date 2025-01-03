@@ -1,13 +1,14 @@
 import { prisma } from "@/lib/prisma";
 
 export default async function handler(req, res) {
-  const { name } = req.query; // Get player name from query
+  const { name } = req.query;
+  console.log("Player name queried:", name);
 
   try {
-    const playerData = await prisma.mergedGW.findMany({
+    const playerData = await prisma.mergedGw.findMany({
       where: {
         name: {
-          contains: "Mohamed Salah", // Search for players matching the name
+          contains: name,
         },
       },
     });
