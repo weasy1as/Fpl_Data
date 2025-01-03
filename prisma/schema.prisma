@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model mergedGw {
+  id                         String   @id @default(auto()) @map("_id") @db.ObjectId
+  GW                         Int
+  assists                    Int
+  bonus                      Int
+  bps                        Int
+  clean_sheets               Int
+  creativity                 Float
+  element                    Int
+  expected_assists           Float
+  expected_goal_involvements Float
+  expected_goals             Float
+  expected_goals_conceded    Float
+  fixture                    Int
+  goals_conceded             Int
+  goals_scored               Int
+  ict_index                  Float
+  influence                  Float
+  kickoff_time               DateTime @db.Date
+  minutes                    Int
+  modified                   Boolean
+  name                       String
+  opponent_team              Int
+  own_goals                  Int
+  penalties_missed           Int
+  penalties_saved            Int
+  position                   String
+  red_cards                  Int
+  round                      Int
+  saves                      Int
+  selected                   Int
+  starts                     Int
+  team                       String
+  team_a_score               Int
+  team_h_score               Int
+  threat                     Float
+  total_points               Int
+  transfers_balance          Int
+  transfers_in               Int
+  transfers_out              Int
+  value                      Int
+  was_home                   Boolean
+  xP                         Float
+  yellow_cards               Int
+}
