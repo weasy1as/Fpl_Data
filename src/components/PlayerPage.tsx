@@ -21,7 +21,7 @@ const PlayerPage = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-4 py-5">
       <h1 className="text-3xl font-bold text-center mb-6">
-        Player name: {name}
+        Player name: {player?.playerName.name}
       </h1>
 
       <div className="bg-[#37003c] text-white p-6 rounded-lg shadow-lg">
@@ -81,6 +81,10 @@ const PlayerPage = () => {
             <p>
               Average Creativity:{" "}
               <span className="font-bold">{player?.averages?.creativity}</span>
+            </p>
+            <p>
+              Average Minutes:{" "}
+              <span className="font-bold">{player?.averages?.minutes}</span>
             </p>
           </div>
         </div>

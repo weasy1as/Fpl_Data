@@ -9,10 +9,30 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Player name is required" });
     }
 
+    const playerName = await prisma.mergedGw.findFirst({
+      where: {
+        name: {
+          contains: name,
+          mode: "insensitive",
+        },
+      },
+      select: {
+        name: true,
+      },
+      distinct: ["name"],
+    });
+
+    if (!playerName) {
+      return res
+        .status(404)
+        .json({ error: "Player not found in the database" });
+    }
+
     const aggregations = await prisma.mergedGw.aggregate({
       where: {
         name: {
           contains: name,
+          mode: "insensitive",
         },
       },
       _avg: {
@@ -23,6 +43,7 @@ export default async function handler(req, res) {
         expected_goal_involvements: true,
         creativity: true,
         total_points: true,
+        minutes: true,
       },
       _sum: {
         goals_scored: true,
@@ -38,6 +59,7 @@ export default async function handler(req, res) {
       message: "Aggregations fetched successfully!",
       averages: aggregations._avg,
       totals: aggregations._sum,
+      playerName: playerName,
     });
   } catch (error) {
     console.error("Error during aggregation:", error);

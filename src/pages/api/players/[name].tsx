@@ -9,15 +9,20 @@ export default async function handler(req, res) {
       where: {
         name: {
           contains: name,
+          mode: "insensitive",
         },
       },
+      select: {
+        name: true,
+      },
+      distinct: ["name"],
     });
 
     if (playerData.length === 0) {
       return res.status(404).json({ message: "Player not found." });
     }
 
-    res.status(200).json(playerData);
+    res.status(200).json({ playerData: playerData.map((p) => p.name) });
   } catch (error) {
     res.status(500).json({ error: error.message });
   } finally {
