@@ -7,22 +7,22 @@ const PlayerPage = () => {
   const [player, setplayer] = useState<any>(null);
   const params = useParams(); // Get all URL parameters as an object
   const name = params?.name ? decodeURIComponent(params?.name) : "";
-  console.log(name);
 
   useEffect(() => {
-    console.log(name);
     fetch(`http://localhost:3000/api/statsPlayer/${name}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Fetched player data:", data);
         setplayer(data);
       });
   }, []);
   return (
     <div className="flex flex-col justify-center items-center gap-4 py-5">
-      <h1 className="text-3xl font-bold text-center mb-6">
+      <h1 className="text-3xl font-bold text-center mb-2">
         Player name: {player?.playerName.name}
       </h1>
+      <h2 className="text-2xl font-bold text-center mb-6">
+        Player team: {player?.playerName.team}
+      </h2>
 
       <div className="bg-[#37003c] text-white p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center mb-6">Player Stats</h1>

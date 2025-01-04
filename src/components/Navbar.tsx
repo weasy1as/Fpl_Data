@@ -45,7 +45,7 @@ const Navbar = () => {
           <IoMenu />
         </div>
         <div className="hidden sm:flex gap-6">
-          <a className="font-bold hover:underline" href="">
+          <a className="font-bold hover:underline" href="/compare">
             Compare player
           </a>
           <a href="" className="font-bold hover:underline">

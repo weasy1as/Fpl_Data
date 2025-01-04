@@ -18,6 +18,7 @@ export default async function handler(req, res) {
       },
       select: {
         name: true,
+        team: true,
       },
       distinct: ["name"],
     });
